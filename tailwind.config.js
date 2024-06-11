@@ -13,8 +13,15 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+                variex: ['variex', 'sans-serif'],
             },
+            colors: {
+                'tealBrighton': '#029FA2',
+                'tealLight': '#51B9A4',
+                'tealDark': '#038E9E',
+                'cream': '#FEFCE8',
+            }
         },
     },
 
