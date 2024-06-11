@@ -1,6 +1,7 @@
 <template>
     <Head><title>Welcome - 10th Anniversary</title></Head>
-    <div class="min-h-screen bg-tealBrighton">
+    <MainLayout>
+
         <main>
             <!-- Hero section -->
             <div class="relative isolate overflow-hidden">
@@ -58,72 +59,18 @@
 
         </main>
 
-        <!-- Footer -->
-        <footer aria-labelledby="footer-heading" class="relative">
-            <h2 id="footer-heading" class="sr-only">Footer</h2>
-            <div class="mx-auto max-w-7xl px-6 pb-8 pt-4 lg:px-8">
-                <div
-                    class="border-t border-white/10 pt-8 md:flex md:items-center md:justify-between"
-                >
-                    <div class="flex space-x-6 md:order-2">
-                        <a
-                            v-for="item in footerNavigation.social"
-                            :key="item.name"
-                            :href="item.href"
-                            class="text-cream"
-                        >
-                            <span class="sr-only">{{ item.name }}</span>
-                            <component
-                                :is="item.icon"
-                                class="h-6 w-6"
-                                aria-hidden="true"
-                            />
-                        </a>
-                    </div>
-                    <p
-                        class="mt-8 text-xs leading-5 text-cream md:order-1 md:mt-0"
-                    >
-                        &copy; 2024. All rights reserved. Site Design by
-                        <a
-                            href="https://gandamediasolutions.com"
-                            class="hover:underline"
-                            >Ganda Media</a
-                        >
-                    </p>
-                </div>
-            </div>
-        </footer>
-    </div>
+
+    </MainLayout>
 </template>
 
 <script setup>
-import { defineComponent, h } from "vue";
 import TextLogo from "@/Components/Graphics/TextLogo.vue";
 import Waves from "@/Components/Graphics/Waves.vue";
 import LogoGanda from "@/Components/Graphics/LogoGanda.vue";
 import LogoDust from "@/Components/Graphics/LogoDust.vue";
 import LogoBangingWines from "@/Components/Graphics/LogoBangingWines.vue";
 import {Head} from '@inertiajs/vue3'
+import MainLayout from "@/Layouts/MainLayout.vue";
 
 
-
-
-const footerNavigation = {
-    social: [
-        {
-            name: "Facebook",
-            href: "https://www.facebook.com/profile.php?id=61561145571191",
-            icon: defineComponent({
-                render: () =>
-                    h("svg", { fill: "currentColor", viewBox: "0 0 24 24" }, [
-                        h("path", {
-                            "fill-rule": "evenodd",
-                            d: "M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z",
-                            "clip-rule": "evenodd",
-                        }),
-                    ]),
-            }),
-        },
-    ],
-};
 </script>
