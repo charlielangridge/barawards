@@ -10,6 +10,9 @@
         <link rel="stylesheet" href="https://use.typekit.net/sgt0gbp.css">
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
+        <!-- Fathom - beautiful, simple website analytics -->
+        <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="GGEHMEBE" defer></script>
+        <!-- / Fathom -->
 
         <!-- Scripts -->
         @routes

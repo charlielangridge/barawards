@@ -112,7 +112,7 @@ const footerNavigation = {
     social: [
         {
             name: "Facebook",
-            href: "#",
+            href: "https://www.facebook.com/profile.php?id=61561145571191",
             icon: defineComponent({
                 render: () =>
                     h("svg", { fill: "currentColor", viewBox: "0 0 24 24" }, [
