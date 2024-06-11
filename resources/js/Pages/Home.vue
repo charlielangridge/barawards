@@ -22,7 +22,7 @@
                             We're back for our 10th Year!
                         </h1>
                         <p class="mt-6 text-lg leading-8 text-cream text-center md:text-left">
-                            It's our 10th year and we're celebrating big! We'll be accepting nominations very soon, then you can vote for your favorites throughout October. Winners will be announced at our our massive bash on Sunday 3rd November.
+                            It's our 10th year and we're celebrating big! We'll be accepting nominations very soon, then you can vote for your favorites throughout October. Winners will be announced at our our massive bash on <span class="font-bold underline text-2xl">Sunday 3rd November</span>.
                         </p>
                     </div>
                     <div
