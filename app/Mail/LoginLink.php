@@ -20,7 +20,7 @@ class LoginLink extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Your Magic Link is here!',
+            subject: 'Your Magic Login Link is here!',
         );
     }
 

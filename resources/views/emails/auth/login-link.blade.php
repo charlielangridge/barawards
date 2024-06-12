@@ -1,10 +1,10 @@
 <x-mail::message>
-# Login Link
+# Brighton Bar Awards Login Link
 
-Use the link below to log into the {{ config('app.name') }} application.
+Use the link below to log into the {{ config('app.name') }}.
 
 <x-mail::button :url="$url">
-    Login
+    Click to Login
 </x-mail::button>
 
 Thanks,<br>
