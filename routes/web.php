@@ -14,14 +14,10 @@ Route::get('/', HomeController::class)->name('home');
 Route::middleware(['guest'])->group(static function (): void {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login');
-
-    Route::get('login/{email}', LoginController::class)
-        ->middleware('signed')->name('login:store');
-
+    Route::get('login/{email}', LoginController::class)->middleware('signed')->name('login:store');
     Route::get('register', function () {
         return Inertia::render('Auth/Register');
     })->name('register');
-
     Route::post('register', [RegisteredUserController::class, 'store']);
 });
 
