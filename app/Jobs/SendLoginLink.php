@@ -35,7 +35,7 @@ class SendLoginLink implements ShouldQueue
 
 
         $url = URL::temporarySignedRoute(
-            name: 'login:store',
+            name: 'login.store',
             expiration: 3600,
             parameters: [
                 'email' => $this->user->email,
