@@ -5,6 +5,15 @@ import { usePage, Link } from "@inertiajs/vue3";
 
 import { Dialog, DialogPanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
+import Waves from "@/Components/Graphics/Waves.vue";
+import SponsorsLogoCloud from "@/Components/SponsorsLogoCloud.vue";
+
+const props = defineProps({
+    hideLogo: {
+        type: Boolean,
+        default: false,
+    },
+});
 
 const page = usePage();
 
@@ -14,6 +23,21 @@ const user = computed(() => page.props.auth.user);
 const alertVisible = computed(() => flash.value.message !== null);
 
 const mobileMenuOpen = ref(false);
+
+const navigation = [
+    {
+        name: "Home",
+        href: "/",
+    },
+    {
+        name: "Awards & Nominations",
+        href: route("awards.index"),
+    },
+    {
+        name: "Partner with us",
+        href: route("partner.index"),
+    },
+];
 
 const footerNavigation = {
     social: [
@@ -42,37 +66,36 @@ const footerNavigation = {
                 class="flex items-center justify-between p-6 lg:px-8"
                 aria-label="Global"
             >
-                <div class="flex lg:hidden">
+                <div class="flex w-full justify-end lg:hidden">
                     <button
                         type="button"
-                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-cream"
                         @click="mobileMenuOpen = true"
                     >
                         <span class="sr-only">Open main menu</span>
-                        <Bars3Icon class="h-6 w-6" aria-hidden="true" />
+                        <Bars3Icon class="h-10 w-10" aria-hidden="true" />
                     </button>
                 </div>
 
                 <div class="hidden gap-x-4 lg:flex lg:flex-1 lg:justify-end">
                     <template v-if="user === null">
-                    <Link
-                        :href="route('register')"
-                        class="text-sm font-semibold leading-6 text-gray-900 hover:underline"
-                        >Register</Link
-                    >
-                    <Link
-                        :href="route('login')"
-                        class="text-sm font-semibold leading-6 text-gray-900 hover:underline"
-                        >Log in
-                    </Link>
+                        <Link
+                            :href="route('register')"
+                            class="text-sm font-semibold leading-6 text-gray-900 hover:underline"
+                            >Register</Link
+                        >
+                        <Link
+                            :href="route('login')"
+                            class="text-sm font-semibold leading-6 text-gray-900 hover:underline"
+                            >Log in
+                        </Link>
                     </template>
                     <template v-else>
-
                         <Link
                             :href="route('logout')"
                             method="post"
                             class="text-sm font-semibold leading-6 text-gray-900 hover:underline"
-                        >Log Out
+                            >Log Out
                         </Link>
                     </template>
                 </div>
@@ -84,43 +107,58 @@ const footerNavigation = {
             >
                 <div class="fixed inset-0 z-50" />
                 <DialogPanel
-                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-tealBrighton px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
                 >
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-start justify-between">
                         <a href="#" class="-m-1.5 p-1.5">
-                            <span class="sr-only">Your Company</span>
+                            <span class="sr-only">Brighton Bar Awards</span>
                             <img
-                                class="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                alt=""
+                                class="h-36 w-auto"
+                                src="/img/logo.svg"
+                                alt="Brighton Bar Awards"
                             />
                         </a>
                         <button
                             type="button"
-                            class="-m-2.5 rounded-md p-2.5 text-gray-700"
+                            class="-m-2.5 rounded-md p-2.5 pt-4 text-cream"
                             @click="mobileMenuOpen = false"
                         >
                             <span class="sr-only">Close menu</span>
-                            <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+                            <XMarkIcon class="h-12 w-12" aria-hidden="true" />
                         </button>
                     </div>
                     <div class="mt-6 flow-root">
-                        <div class="-my-6 divide-y divide-gray-500/10">
+                        <div class="-my-6 divide-y-2 divide-cream">
                             <div class="space-y-2 py-6">
-                                <a
+                                <Link
                                     v-for="item in navigation"
                                     :key="item.name"
                                     :href="item.href"
-                                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                    >{{ item.name }}</a
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-cream hover:underline"
+                                    >{{ item.name }}</Link
                                 >
                             </div>
                             <div class="py-6">
-                                <a
-                                    href="#"
-                                    class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                    >Log in</a
-                                >
+                                <template v-if="user === null">
+                                    <Link
+                                        :href="route('register')"
+                                        class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-cream hover:underline"
+                                        >Register</Link
+                                    >
+                                    <Link
+                                        :href="route('login')"
+                                        class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-cream hover:underline"
+                                        >Log in
+                                    </Link>
+                                </template>
+                                <template v-else>
+                                    <Link
+                                        :href="route('logout')"
+                                        method="post"
+                                        class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-cream hover:underline"
+                                        >Log Out
+                                    </Link>
+                                </template>
                             </div>
                         </div>
                     </div>
@@ -129,8 +167,33 @@ const footerNavigation = {
         </header>
         <Alert />
 
-        <slot></slot>
-
+        <main>
+            <div class="relative isolate overflow-hidden">
+                <Waves
+                    class="absolute inset-0 -z-10 h-24 text-tealLight [mask-image:radial-gradient(100%_80%_at_top_right,white,transparent)] md:h-auto"
+                />
+                <div
+                    class="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-16 lg:px-8 lg:pt-8"
+                >
+                    <div
+                        v-if="!props.hideLogo"
+                        class="mx-auto mb-12 flex max-w-7xl items-center justify-between"
+                    >
+                        <Link :href="route('home')" class="-m-1.5 p-1.5 py-0">
+                            <span class="sr-only">Brighton Bar Awards</span>
+                            <img
+                                class="h-36 w-auto"
+                                src="/img/logo.svg"
+                                alt=""
+                            />
+                        </Link>
+                    </div>
+                    <slot></slot>
+                </div>
+            </div>
+            <!-- Logo cloud -->
+            <SponsorsLogoCloud />
+        </main>
         <!-- Footer -->
         <footer aria-labelledby="footer-heading" class="relative">
             <h2 id="footer-heading" class="sr-only">Footer</h2>
